@@ -44,30 +44,43 @@ export class QuantumLines {
   // Start A and B
   static get DS() {
     return {
-      lines: ["\x01\x13DS| 1| 2|  2|202| 3:12:52.933\x04"],
-      i_dont_now: 1,
-      heat: 2,
-      start_a: 2,
-      start_b: 202,
-      start_time: "3:12:52.933",
+      msg: "\x01\x13DS| 1| 2|  2|202| 3:12:52.933\x04",
+      payload: {
+        action: "DS",
+        stage: 1,
+        heat: 2,
+        startA: 2,
+        startB: 202,
+        startTime: "3:12:52.933",
+      },
     };
   }
 
   static get DI() {
     return {
-      lines: [
-        "\x01\x13DI| 1| 2| 7|  2|      37.521|            \x04",
-        "\x01\x13DI| 1| 2| 7|202|      37.547|            \x04",
-      ],
+      msg: "\x01\x13DI| 1| 2| 7|  2|      37.521|            \x04",
+      payload: {
+        action: "DI",
+        stage: 1,
+        heat: 2,
+        pulse: 7,
+        bib: 2,
+        time: "37.521",
+      },
     };
   }
 
   static get DF() {
     return {
-      lines: [
-        "\x01\x13DF| 1| 2| 8|202|   |      41.952|            \x04",
-        "\x01\x13DF| 1| 2| 8|  2|   |      41.955|            \x04",
-      ],
+      msg: "\x01\x13DF| 1| 2| 8|202|   |      41.952|            \x04",
+      payload: {
+        action: "DF",
+        stage: 1,
+        heat: 2,
+        pulse: 8,
+        bib: 2,
+        time: "41.952",
+      },
     };
   }
 }
