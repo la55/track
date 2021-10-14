@@ -389,8 +389,6 @@ export const raceData = `
 \x01\x14TP\x04\n
 \x01\x14TP\x04\n
 
-`;
-
-for (const line of raceData.split("\n")) {
-  console.log(line);
-}
+`
+  .split("\n")
+  .filter((line) => line.length > 0);

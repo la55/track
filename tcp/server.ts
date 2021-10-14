@@ -1,10 +1,12 @@
 export class TcpServer {
   public listener: Deno.Listener;
   public port;
+  public messageHandler;
 
-  constructor(port: number) {
+  constructor(port: number, messageHandler: (msg: string) => void) {
     this.port = port;
     this.listener = Deno.listen({ port: this.port });
+    this.messageHandler = messageHandler;
   }
 
   async listenForConn() {
@@ -18,7 +20,7 @@ export class TcpServer {
     await conn.read(buf);
     const decoder = new TextDecoder();
     const data = decoder.decode(buf);
-    console.log(data);
+    this.messageHandler(data);
     conn.close();
   }
 }
